@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B864415-E578-4B8E-8290-6A8C38E50C3B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Part.MQClient</RootNamespace>
+    <AssemblyName>Part.MQClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\..\PartLab\LibCSharp\PartForum\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\forum\packages\RabbitMQ.Client.3.4.3\lib\net35\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Consumers\Consumer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Consumers\ConsumerSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Consumers\ConsumingMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Consumers\IMessageContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Consumers\IMessageHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Consumers\MessageContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Consumers\MessageHandleMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Producers\IQueueSelector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Producers\Producer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Producers\ProducerSetting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Producers\QueueAverageSelector.cs" />
+    <Compile Include="Producers\QueueHashSelector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Producers\SendResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Producers\SendStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configurations\ConfigurationExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocols\Message.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Protocols\MessageQueue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Protocols\QueueMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ecommon\src\ECommon\ECommon.csproj">
+      <Project>{d60f17ce-ff99-42cd-af71-97c157b17af3}</Project>
+      <Name>ECommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
