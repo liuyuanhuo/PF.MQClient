@@ -9,6 +9,7 @@ namespace EQueue.Clients.Producers
         //public MessageQueue MessageQueue { get; private set; }
         //public long QueueOffset { get; private set; }
         //public long MessageOffset { get; private set; }
+        //public string MessageId { get; private set; }
 
         public SendResult(SendStatus sendStatus, string errorMessage)
         {
@@ -20,6 +21,7 @@ namespace EQueue.Clients.Producers
             )
         {
             SendStatus = sendStatus;
+            //MessageId = messageId;
             //MessageOffset = messageOffset;
             //MessageQueue = messageQueue;
             //QueueOffset = queueOffset;
@@ -32,6 +34,7 @@ namespace EQueue.Clients.Producers
                 //MessageQueue,
                 //QueueOffset,
                 //MessageOffset,
+                //MessageId,
                 ErrorMessage);
         }
     }

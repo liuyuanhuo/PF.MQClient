@@ -117,16 +117,22 @@ namespace EQueue.Clients.Producers
 
         public SendResult Send(Message message, object routingKey)
         {
+            Ensure.NotNull(message, "message");
+
             EnsureProduceMQClient();
 
             var currentRoutingKey = GetStringRoutingKey(routingKey);
             var queueIds = GetTopicQueueIds(message.Topic);
             var queueId = _queueSelector.SelectQueueId(queueIds, message, currentRoutingKey);
+            if (queueId < 0)
+            {
+                throw new Exception(string.Format("No available routing queue for topic [{0}].", message.Topic));
+            }
 
             string strExchange = message.Topic + "." + queueId;
             string strRoutingKey = message.Topic + "." + queueId;
 
-            var queueMessage = new QueueMessage(message.Topic, message.Code, message.Body, queueId, DateTime.Now, currentRoutingKey, 0);
+            var queueMessage = new QueueMessage(message.Topic, message.Code, message.Body, queueId, DateTime.Now, DateTime.Now, DateTime.Now, currentRoutingKey, 0);
             var data = _binarySerializer.Serialize(queueMessage);
             //var request = new SendMessageRequest { Message = message, QueueId = queueId, RoutingKey = routingKey.ToString() };
             //var data = MessageUtils.EncodeSendMessageRequest(request);
@@ -134,29 +140,9 @@ namespace EQueue.Clients.Producers
 
             return new SendResult(SendStatus.Success);
         }
-        public Task<SendResult> SendAsync(Message message, object routingKey)
+        public async Task<SendResult> SendAsync(Message message, object routingKey)
         {
-            EnsureProduceMQClient();
-
-            var currentRoutingKey = GetStringRoutingKey(routingKey);
-            var queueIds = GetTopicQueueIds(message.Topic);
-            var queueId = _queueSelector.SelectQueueId(queueIds, message, currentRoutingKey);
-
-            string strExchange = message.Topic + "." + queueId;
-            string strRoutingKey = message.Topic + "." + queueId;
-
-            var queueMessage = new QueueMessage(message.Topic, message.Code, message.Body, queueId, DateTime.Now, currentRoutingKey, 0);
-            var data = _binarySerializer.Serialize(queueMessage);
-            //var request = new SendMessageRequest { Message = message, QueueId = queueId, RoutingKey = routingKey.ToString() };
-            //var data = MessageUtils.EncodeSendMessageRequest(request);
-
-            _channel.BasicPublish(strExchange, strRoutingKey, _basicProp, data);
-
-            var taskCompletionSource = new TaskCompletionSource<SendResult>();
-            SendResult result = new SendResult(SendStatus.Success);
-            taskCompletionSource.SetResult(result);
-
-            return taskCompletionSource.Task;
+            return Send(message, routingKey);
         }
 
         private string GetStringRoutingKey(object routingKey)
