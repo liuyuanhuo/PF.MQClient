@@ -1,0 +1,17 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "",
+  "authors": [ "" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "dependencies": {
+    "RabbitMQ.Client": "3.5.2",
+    "ECommon": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "dnx451": { } 
+  }
+}

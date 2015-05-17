@@ -1,0 +1,59 @@
+{
+  "locked": false,
+  "version": -9998,
+  "projectFileDependencyGroups": {
+    "": [
+      "RabbitMQ.Client >= 3.5.2",
+      "ECommon >= 1.0.0-*"
+    ],
+    "DNX,Version=v4.5.1": []
+  },
+  "libraries": {
+    "ECommon/1.0.0": {
+      "serviceable": false,
+      "sha": "Gvf1udJvcY4YzzjUePsn4413BSBe1MF4PUguubwAJFOqQEmY9Vj0SNcV4/001e/XzS5q0kxAERswQ/kHxFc3hg==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net40/ECommon.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/ECommon.dll"
+          ]
+        }
+      },
+      "files": [
+        "ECommon.1.0.0.nupkg",
+        "ECommon.1.0.0.nupkg.sha512",
+        "ECommon.nuspec",
+        "lib/net40/ECommon.dll",
+        "lib/net40/ECommon.xml"
+      ]
+    },
+    "RabbitMQ.Client/3.5.2": {
+      "serviceable": false,
+      "sha": "ZrRF/UJKDmT1t6p5GYKDUAuTSa/XHS3p3smZX8+smv5V3SWTc4T1+x0igez80WCvKawhKq5OkFztTkxkd9PpBA==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net40/RabbitMQ.Client.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/RabbitMQ.Client.dll"
+          ]
+        }
+      },
+      "files": [
+        "RabbitMQ.Client.3.5.2.nupkg",
+        "RabbitMQ.Client.3.5.2.nupkg.sha512",
+        "RabbitMQ.Client.nuspec",
+        "lib/net40/RabbitMQ.Client.dll",
+        "lib/net40/RabbitMQ.Client.xml"
+      ]
+    }
+  }
+}
