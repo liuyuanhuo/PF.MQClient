@@ -93,7 +93,7 @@ namespace EQueue.Clients.Consumers
 
             _binarySerializer = ObjectContainer.Resolve < IBinarySerializer>();
             _scheduleService = ObjectContainer.Resolve<IScheduleService>();
-            //_allocateMessageQueueStragegy = Part.Global.Interfaces.IOCContainer.Resolve<IAllocateMessageQueueStrategy>();
+            //_allocateMessageQueueStragegy = PF.Global.Interfaces.IOCContainer.Resolve<IAllocateMessageQueueStrategy>();
             _logger = ObjectContainer.Resolve<ILoggerFactory>().Create(GetType().FullName);
             //_waitSocketConnectHandle = new AutoResetEvent(false);
         }

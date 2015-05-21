@@ -9,7 +9,7 @@ namespace EQueue.Configurations
     {
         public static Configuration RegisterEQueueComponents(this Configuration appBuilder)
         {
-            //Part.Global.Interfaces.IOCContainer.Register<AverageAllocateMessageQueueStrategy, IAllocateMessageQueueStrategy>();
+            //PF.Global.Interfaces.IOCContainer.Register<AverageAllocateMessageQueueStrategy, IAllocateMessageQueueStrategy>();
             appBuilder.SetDefault<IQueueSelector, QueueHashSelector>();
             //appBuilder.SetDefault<IMessageStore, InMemoryMessageStore>(new InMemoryMessageStore(new InMemoryMessageStoreSetting()));
             //appBuilder.SetDefault<IMessageService, MessageService>();

@@ -7,8 +7,8 @@
     <ProjectGuid>{7B864415-E578-4B8E-8290-6A8C38E50C3B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Part.MQClient</RootNamespace>
-    <AssemblyName>Part.MQClient</AssemblyName>
+    <RootNamespace>PF.MQClient</RootNamespace>
+    <AssemblyName>PF.MQClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\..\PartLab\LibCSharp\PartForum\</SolutionDir>
@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="RabbitMQ.Client">
-      <HintPath>..\forum\packages\RabbitMQ.Client.3.4.3\lib\net35\RabbitMQ.Client.dll</HintPath>
+      <HintPath>..\..\..\..\packages\RabbitMQ.Client.3.4.3\lib\net35\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -100,7 +100,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ecommon\src\ECommon\ECommon.csproj">
+    <ProjectReference Include="..\..\..\..\PB\ecommon\src\ECommon\ECommon.csproj">
       <Project>{d60f17ce-ff99-42cd-af71-97c157b17af3}</Project>
       <Name>ECommon</Name>
     </ProjectReference>
